@@ -8,9 +8,7 @@ import discord
 from discord.ext import commands 
 import youtube_dl
 
-#DISCORD_TOKEN = os.getenv("TOKEN")
-
-DISCORD_TOKEN = "MTAyNzIwNzgzNzYwNjIyODA1OA.GwbLHy.JYsTep5LQ7wg8Y4yH0Beg7CxTNONt5HWIslK2k"
+DISCORD_TOKEN = os.getenv("TOKEN")
 
 #print(DISCORD_TOKEN)
 
