@@ -1,12 +1,13 @@
 import random
 import requests
 import json
-
+import qrcode
 import os
 import asyncio
 import discord
 from discord.ext import commands 
 import youtube_dl
+import image
 
 DISCORD_TOKEN = os.getenv("TOKEN")
 
@@ -96,9 +97,26 @@ async def joke(ctx):
     await ctx.channel.send(embed=embed)
 
 @bot.command(
+    help="This command creates a qr based on a string or url.",
+    brief="Crazy calculation to create a QR Code"
+)
+async def qr(ctx,*,url):
+    qr = qrcode.QRCode(
+        version=1,
+        box_size=10,
+        border=5)
+    qr.add_data(url)
+    qr.make(fit=True)
+    img = qr.make_image(fill='black', back_color='white')
+    img.save('qr_code.png')
+
+    await ctx.channel.send('Here is your QR Code!', file=discord.File(r'/usr/src/app/qr_code.png'))
+    os.remove("qr_code.png")
+
+@bot.command(
     name="reminder"
 )
-async def remmin(ctx,time=None,*, amount: str):
+async def remind(ctx,time=None,*, amount: str):
     if time==None:
         await ctx.send("Please insert all the arguements.e.g kb$rem time(in minutes) text")
     else:
