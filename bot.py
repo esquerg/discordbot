@@ -3,7 +3,7 @@ import requests
 import json
 
 import os
-
+import asyncio
 import discord
 from discord.ext import commands 
 import youtube_dl
@@ -18,6 +18,95 @@ intents = discord.Intents.all()
 bot = commands.Bot(('!','bot '), intents=intents, case_insensitive = True, strip_after_prefix=True)
 
 #bot = commands.Bot(command_prefix="!",intents=discord.Intents.all())
+@bot.event
+async def on_ready():
+    print(f'{bot.user} has connected to Discord!')
+    # test = ""
+    # for command in bot.commands:
+    #     test = test + " " + str(command)
+
+@bot.command(
+    help ="You need some help",
+    brief ="It makes a crazy calculation to determing the answer"
+)
+async def ping(ctx):
+    embed = discord.Embed(title="Function Ping", color=discord.Colour.gold())
+    embed.add_field(name="pong", value="This is pong")
+    await ctx.channel.send(embed=embed)
+
+sadWords = ["sad","depressed","lonely"]
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    if message.content.lower() == "hello":
+        await message.channel.send('Hello my brother')
+
+    for word in sadWords:
+        if word in message.content:
+            embed = discord.Embed(title="Don't be sad my dear friend!", color=discord.Colour.yellow())
+            embed.add_field(name="Happy quote :) ", value=get_quote())
+            await message.channel.send(embed=embed)
+
+    await bot.process_commands(message)
+
+@bot.event
+async def on_member_join(member):
+    embed = discord.Embed(title="Welcome to the Server {0}!".format(member.name), color=discord.Colour.green())
+    test = ""
+    for command in bot.commands:
+        test = test + "-" + str(command)
+
+    embed.add_field(name="The available commands are: ",value=test) 
+    await member.send(embed=embed)
+
+def get_joke():
+    response = requests.get("https://api.chucknorris.io/jokes/random")
+    json_data = json.loads(response.text)
+    joke = json_data['value']
+    return joke
+
+def get_quote():
+    response = requests.get("https://type.fit/api/quotes")
+    json_data = json.loads(response.text)
+    rand = random.randint(0,1643)
+    quote = json_data[rand]['text']
+    return quote
+
+@bot.command(
+    name = "quote"
+)
+async def inspiration(ctx):
+    embed = discord.Embed(title="Read this words of wisdom...", color=discord.Colour.red())
+    response = get_quote()
+    embed.add_field(name="Quote of Today: ", value=response)
+    await ctx.channel.send(embed=embed)
+
+@bot.command(
+    #name = "chucknorris",
+    help = "This gives a Chuck Norris joke",
+    brief = "Calculation to determing the Chuck Norris joke."
+)
+async def joke(ctx):
+    embed = discord.Embed(title="Believe it or not", color=discord.Colour.blue(), description="this is a description")
+    response = get_joke()
+    embed.add_field(name="Joke", value=response, inline=False)
+    await ctx.channel.send(embed=embed)
+
+@bot.command(
+    name="reminder"
+)
+async def remmin(ctx,time=None,*, amount: str):
+    if time==None:
+        await ctx.send("Please insert all the arguements.e.g kb$rem time(in minutes) text")
+    else:
+        await asyncio.sleep(int(time)*60)
+        embed = discord.Embed(title = 'Reminder!', color = discord.Colour.magenta())
+        embed.add_field(name = f"Requested by {ctx.author.name}", value = amount , inline=True)
+        await ctx.send(embed = embed)
+        asyncio.get_event_loop()
 
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -114,64 +203,5 @@ async def stop(ctx):
         await voice_client.stop()
     else:
         await ctx.send("The bot is not playing anything at the moment.")
-
-def get_joke():
-    response = requests.get("https://api.chucknorris.io/jokes/random")
-    json_data = json.loads(response.text)
-    joke = json_data['value']
-    return joke
-
-def get_quote():
-    response = requests.get("https://type.fit/api/quotes")
-    json_data = json.loads(response.text)
-    rand = random.randint(0,1643)
-    quote = json_data[rand]['text']
-    return quote
-
-@bot.event
-async def on_ready():
-    print(f'{bot.user} has connected to Discord!')
-    for command in bot.commands:
-        print(command.name)
-
-@bot.command(
-    name = "quote"
-)
-async def inspiration(ctx):
-    response = get_quote()
-    await ctx.channel.send(response)
-
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-
-    if message.content.lower() == "hello":
-        await message.channel.send('Hello my brother')
-
-    await bot.process_commands(message)
-
-@bot.event
-async def on_member_join(member):
-    print("Welcome to the Server", str(member),":)")
-    await member.send("Welcome to the Server {0} :)".format(member.name))
-
-@bot.command(
-    #name = "chucknorris",
-    help = "This gives a Chuck Norris joke",
-    brief = "Calculation to determing the Chuck Norris joke."
-)
-async def joke(ctx):
-    response = get_joke()
-    await ctx.channel.send(response)
-
-@bot.command
-
-@bot.command(
-    help ="You need some help",
-    brief ="It makes a crazy calculation to determing the answer"
-)
-async def ping(ctx):
-    await ctx.channel.send("pong")
 
 bot.run(DISCORD_TOKEN)
