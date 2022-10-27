@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 RUN apk update && apk add bash
 
-ENV TOKEN="MTAyNzIwNzgzNzYwNjIyODA1OA.GwbLHy.JYsTep5LQ7wg8Y4yH0Beg7CxTNONt5HWIslK2k"
+ENV TOKEN="your_token"
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
 RUN python3 -m ensurepip
