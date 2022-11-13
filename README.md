@@ -17,7 +17,7 @@ Here we are going to explain in details how to run and incorporate this bot to y
 ## About Us
 
 <a href="https://github.com/github_username/repo_name">
-  <img src="./img/aboutUs.jpg" alt="Logo" width="1460" height="1008">
+  <img src="./img/aboutUs.jpg" alt="Logo" width="730" height="504">
 </a>
 
 We are students of LaSalle College who present an interesting topic for the student community. **Creating a Discord Bot from Scratch with Python.**
