@@ -9,18 +9,10 @@
 
 
 <h1 align="center">Welcome to the DiscordBot Repository</h1>
-## For TechWeek LaSalle College 2022.
-Here we are going to explain in details how to run and incorporate this bot to your server in discord.
 
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About Us</a>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-  </ol>
-</details>
+<h2 align="center">For TechWeek LaSalle College 2022.</h2>
+
+Here we are going to explain in details how to run and incorporate this bot to your server in discord.
 
 ## About Us
 
@@ -40,7 +32,7 @@ Luis Davila: From Colombia, Graduated in System Engineering and Project Manageme
 
 Paola Gonzalez: Colombienne passionnée dans la recherche de nouvelles connaissances en lien avec l'informatique et à la technologie. Actuellement étudiante à temps plein en analyse de programmation ainsi qu’étudiante à temps partiel en commerce électronique.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="center">If you want to know more about our Tech Week <a href="https://intlasalle.wixsite.com/tech-week">click here</a></p>
 
 ## Usage
 
