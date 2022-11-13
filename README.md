@@ -5,11 +5,11 @@
   <a href="https://github.com/github_username/repo_name">
     <img src="./img/discordPyLogo.png" alt="Logo" width="80" height="80">
   </a>
+</div>
 
 
 <h1 align="center">Welcome to the DiscordBot Repository</h1>
-
-Welcome to our Discord Bot repository for TechWeek LaSalle College 2022.
+## For TechWeek LaSalle College 2022.
 Here we are going to explain in details how to run and incorporate this bot to your server in discord.
 
 <details>
@@ -25,7 +25,7 @@ Here we are going to explain in details how to run and incorporate this bot to y
 ## About Us
 
 <a href="https://github.com/github_username/repo_name">
-  <img src="./img/aboutUs.jpg" alt="Logo" width="392" height="296">
+  <img src="./img/aboutUs.jpg" alt="Logo" width="366" height="193">
 </a>
 
 We are students of LaSalle College who present an interesting topic for the student community. **Creating a Discord Bot from Scratch with Python.**
