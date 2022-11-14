@@ -15,3 +15,5 @@ ydl_opts = {
 
         }],
     }
+
+https://github.com/esquerg/discordbot
