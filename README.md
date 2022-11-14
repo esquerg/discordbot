@@ -20,7 +20,7 @@ Here we are going to explain in details how to run and incorporate this bot to y
   <img src="./img/aboutUs.jpg" alt="Logo" width="730" height="504">
 </a>
 
-We are students of LaSalle College who present an interesting topic for the student community. **Creating a Discord Bot from Scratch with Python.**
+We are students of LaSalle College who present an interesting topic for the student community. **Creating a Discord Bot from Scratch with Python.**.
 
 And in this repository you will find what is necessary for our Workshop.
 
