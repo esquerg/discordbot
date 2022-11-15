@@ -16,7 +16,7 @@ for intent in bot.intents:
     print(intent)
 
 
-token = "MTAyNzIwNzgzNzYwNjIyODA1OA.GJqsXz.27QF9L_liAZGddLbO_WG2GxHNC24CDs_reiQ9I"
+token = ""
 
 #Explain what is an event and what does it do to the function preparation as a decorator
 @bot.event
